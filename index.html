@@ -6,7 +6,7 @@
   <title>Gnanasekaran & Vaibhava — git merge our-lives</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -28,20 +28,20 @@
         <span class="dot green"></span>
         <span class="terminal-title">love.sh — zsh</span>
       </div>
-      <div class="terminal-body">
-        <p class="line"><span class="prompt">$</span> <span class="cmd typing" data-text="git init our-love-story">git init our-love-story</span></p>
-        <p class="line output fade-in-delay-1">Initialized empty repository in /life/together/.git</p>
-        <p class="line fade-in-delay-2"><span class="prompt">$</span> <span class="cmd">git merge gnanasekaran vaibhava --strategy=love</span></p>
-        <p class="line output fade-in-delay-3">Merging branches... <span class="success">✓ Successfully merged!</span></p>
-        <p class="line output fade-in-delay-4 blink-cursor">No conflicts found. It was meant to be. 💛</p>
+      <div class="terminal-body" id="heroTerminal">
+        <p class="line hero-line" data-delay="0"><span class="prompt">$</span> <span class="cmd" data-typetext="git init our-love-story"></span></p>
+        <p class="line output hero-line" data-delay="1200">Initialized empty repository in /life/together/.git</p>
+        <p class="line hero-line" data-delay="2000"><span class="prompt">$</span> <span class="cmd" data-typetext="git merge gnanasekaran vaibhava --strategy=love"></span></p>
+        <p class="line output hero-line" data-delay="1500">Merging branches... <span class="success">✓ Successfully merged!</span></p>
+        <p class="line output hero-line blink-cursor" data-delay="2000">No conflicts found. It was meant to be. 💛</p>
       </div>
     </div>
-    <div class="hero-content fade-in-delay-5">
-      <p class="hero-subtitle">You're invited to witness the most beautiful</p>
-      <h1 class="hero-title"><span class="code-keyword">merge</span><span class="code-paren">(</span><span class="code-string">"Gnanasekaran"</span><span class="code-comma">,</span> <span class="code-string">"Vaibhava"</span><span class="code-paren">)</span></h1>
-      <p class="hero-date">April 12, 2026</p>
+    <div class="hero-content" style="opacity:1;">
+      <p class="hero-subtitle hero-line" data-delay="200" style="opacity:0;"><span data-typetext="You're invited to witness the most beautiful"></span></p>
+      <h1 class="hero-title hero-line" data-delay="200" style="opacity:0;"><span data-typerich='[{"t":"merge","c":"code-keyword"},{"t":"(","c":"code-paren"},{"t":"\"Gnanasekaran\"","c":"code-string"},{"t":", ","c":"code-comma"},{"t":"\"Vaibhava\"","c":"code-string"},{"t":")","c":"code-paren"}]'></span></h1>
+      <p class="hero-date hero-line" data-delay="200" style="opacity:0;"><span data-typetext="April 12, 2026"></span></p>
     </div>
-    <a href="#story" class="scroll-cta fade-in-delay-6">
+    <a href="#story" class="scroll-cta hero-line" data-delay="500" style="opacity:0;">
       <span>Scroll to compile</span>
       <svg class="bounce" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </a>

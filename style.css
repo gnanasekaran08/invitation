@@ -27,9 +27,9 @@
   --code-class: #ffa657;
   --code-comment: #8b949e;
   --code-prop: #d2a8ff;
-  --font-code: 'Fira Code', monospace;
-  --font-script: 'Dancing Script', cursive;
-  --font-sans: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-script: 'JetBrains Mono', monospace;
+  --font-sans: 'JetBrains Mono', monospace;
   --glow-pink: 0 0 30px rgba(255, 107, 157, 0.3);
   --glow-purple: 0 0 30px rgba(196, 77, 255, 0.3);
   --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.5);
@@ -281,6 +281,24 @@ body {
 .fade-in-delay-4 { animation: fadeIn 0.8s ease 2.8s both; }
 .fade-in-delay-5 { animation: fadeInUp 1s ease 3.5s both; }
 .fade-in-delay-6 { animation: fadeIn 1s ease 4.5s both; }
+
+/* Hero typing lines */
+.hero-line {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hero-line [data-typetext].typing::after,
+.hero-line [data-typerich].typing::after {
+  content: "█";
+  animation: blink 0.8s infinite;
+  color: var(--accent-green);
+}
+
+.hero-line [data-typetext].typed::after,
+.hero-line [data-typerich].typed::after {
+  display: none;
+}
 
 /* Scroll reveal */
 .reveal {

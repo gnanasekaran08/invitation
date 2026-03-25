@@ -18,6 +18,99 @@
 })();
 
 /* ==========================================
+   HERO TYPING EFFECT
+   ========================================== */
+(function initHeroTyping() {
+    const lines = document.querySelectorAll(".hero-line");
+
+    // Hide all lines initially
+    lines.forEach((line) => {
+        line.style.opacity = "0";
+        line.style.transition = "opacity 0.4s ease";
+    });
+
+    function typeText(el, text, speed) {
+        return new Promise((resolve) => {
+            el.classList.add("typing");
+            let i = 0;
+            el.textContent = "";
+            function tick() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(tick, speed);
+                } else {
+                    el.classList.remove("typing");
+                    el.classList.add("typed");
+                    resolve();
+                }
+            }
+            tick();
+        });
+    }
+
+    function typeRich(el, segments, speed) {
+        return new Promise((resolve) => {
+            el.classList.add("typing");
+            el.innerHTML = "";
+            let segIdx = 0;
+            let charIdx = 0;
+            let currentSpan = null;
+
+            function tick() {
+                if (segIdx >= segments.length) {
+                    el.classList.remove("typing");
+                    el.classList.add("typed");
+                    resolve();
+                    return;
+                }
+                const seg = segments[segIdx];
+                if (charIdx === 0) {
+                    currentSpan = document.createElement("span");
+                    currentSpan.className = seg.c;
+                    el.appendChild(currentSpan);
+                }
+                currentSpan.textContent += seg.t.charAt(charIdx);
+                charIdx++;
+                if (charIdx >= seg.t.length) {
+                    segIdx++;
+                    charIdx = 0;
+                }
+                setTimeout(tick, speed);
+            }
+            tick();
+        });
+    }
+
+    async function runSequence() {
+        for (const line of lines) {
+            const delay = parseInt(line.dataset.delay, 10) || 0;
+            await new Promise((r) => setTimeout(r, delay));
+
+            line.style.opacity = "1";
+
+            // Check for rich typed content (colored segments)
+            const richEl = line.querySelector("[data-typerich]");
+            if (richEl) {
+                const segments = JSON.parse(richEl.dataset.typerich);
+                await typeRich(richEl, segments, 45);
+                continue;
+            }
+
+            // Check if this line has a typetext command
+            const typeEl = line.querySelector("[data-typetext]");
+            if (typeEl) {
+                const text = typeEl.dataset.typetext;
+                await typeText(typeEl, text, 45);
+            }
+        }
+    }
+
+    // Small initial delay before starting
+    setTimeout(runSequence, 400);
+})();
+
+/* ==========================================
    RIBBON / CONFETTI BACKGROUND
    ========================================== */
 (function initParticles() {
@@ -393,33 +486,6 @@ function launchConfetti() {
             konamiIndex = 0;
         }
     });
-})();
-
-/* ==========================================
-   AUTO CELEBRATE ON REACHING BOTTOM
-   ========================================== */
-(function initBottomCelebration() {
-    let interval = null;
-
-    const footer = document.querySelector(".footer");
-    if (!footer) return;
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting && !interval) {
-                    launchConfetti();
-                    interval = setInterval(launchConfetti, 300);
-                } else if (!entry.isIntersecting && interval) {
-                    clearInterval(interval);
-                    interval = null;
-                }
-            });
-        },
-        { threshold: 0.3 },
-    );
-
-    observer.observe(footer);
 })();
 
 /* ==========================================
