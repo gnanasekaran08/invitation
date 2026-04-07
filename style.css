@@ -699,6 +699,57 @@ body {
 }
 
 /* ==========================================
+   MAP — RECEPTION LOCATION
+   ========================================== */
+.map-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 32px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.map-container:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(88, 166, 255, 0.2);
+}
+
+.map-body {
+  width: 100%;
+  line-height: 0;
+}
+
+.map-body iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+}
+
+.map-directions-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(196, 77, 255, 0.1));
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-family: var(--font-code);
+  font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  font-weight: 500;
+  border-top: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.map-directions-btn:hover {
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.2), rgba(196, 77, 255, 0.2));
+  color: var(--accent-pink);
+}
+
+/* ==========================================
    FUNCTIONS — WHAT TO EXPECT
    ========================================== */
 .func-grid {
